@@ -15,7 +15,7 @@ from art import tprint
 # Create the application instance
 app = Flask(__name__, template_folder="./frontend", static_folder="./frontend")
 app2 = connexion.App(__name__, specification_dir="./")
-app2.app = Flask(__name__, template_folder="./frontend", static_folder="./frontend")
+app2.app = Flask(__name__, template_folder="./frontend", static_folder="./frontend", static_url_path="/")
 cors = CORS(app2.app)
 
 
@@ -39,7 +39,7 @@ def home():
     :return:        the rendered template "home.html"
     
     """
-    return app.send_static_file('home.html')
+    return render_template('home.html')
 
 ## FOR CORS
 def set_cors_headers_on_response(response):

@@ -6,13 +6,13 @@ info:
 consumes:
   - application/json
 produces:
-  - application/json
+  - text/html
 
-basePath: /api
+basePath: /
 
 # Paths supported by the server application
 paths:
-  /bus_checkin_times:
+  /bus_times:
     get:
       tags:
         - Bus Checkin Times
