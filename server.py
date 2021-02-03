@@ -41,6 +41,18 @@ def home():
     """
     return render_template('home.html')
 
+@app2.route("/jitsi")
+@cross_origin()
+def jitsi():
+    """
+    This function just responds to the browser URL
+    localhost:5000/
+
+    :return:        the rendered template "home.html"
+    
+    """
+    return render_template('jitsi.html')
+
 ## FOR CORS
 def set_cors_headers_on_response(response):
     response.headers['Access-Control-Allow-Origin'] = '*'
