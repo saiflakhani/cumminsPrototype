@@ -3,6 +3,7 @@ import config
 import simplejson as json
 import utils
 import db
+import traceback
 
 client = None
 conn = None
@@ -31,7 +32,7 @@ def on_message(client, userdata, msg):
                     conn.close()
 
     except Exception as e:
-        print("Error in on_message: "+str(e))
+        print("Error in on_message: "+str(e)+"\nTraceback:" +traceback.format_exc())
         if conn is not None:
             conn.close()
 
