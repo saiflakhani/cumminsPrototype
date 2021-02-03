@@ -1,8 +1,8 @@
 swagger: "2.0"
 info:
-  description: ISAE Documentation for backend implementation
+  description: Cummins Documentation for backend implementation
   version: "1.0.1"
-  title: ISAE Docs
+  title: Cummins Docs
 consumes:
   - application/json
 produces:
@@ -79,4 +79,38 @@ paths:
       responses:
         200:
           description: Success
+
+  /rssi_limit:
+    get:
+      tags:
+        - RSSI Limit
+      summary: Read current RSSI limit for entry
+      description: Read current RSSI limit for entry
+      operationId: rssi_limit.read_limit
+      responses:
+        200:
+          description: Success
+          schema:
+            type: object
+            properties:
+              rssi:
+                type: number
+
+    post:
+      tags:
+        - RSSI Limit
+      summary: Set current RSSI limit for entry
+      description: Set current RSSI limit for entry
+      operationId: rssi_limit.set_limit
+      parameters:
+        - name: rssi
+          type: number
+          description: RSSI to set
+          required: true
+          in: query
+      responses:
+        200:
+          description: Success
+
+
               

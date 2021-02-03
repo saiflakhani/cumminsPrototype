@@ -7,6 +7,7 @@ import db
 client = None
 conn = None
 cursor = None
+RSSI_LIMIT_TO_ENTRY = -70
 
 def on_connect(client, userdata, flags, rc):
     global conn, cursor
@@ -22,10 +23,11 @@ def on_message(client, userdata, msg):
         trigger_obj = json.loads(msg.payload)
         if trigger_obj is not None and 'data' in trigger_obj.keys():
             if 'node' in trigger_obj['data'].keys() and 'rssi' in trigger_obj['data'].keys():
-                query = "INSERT INTO bus_checkins(lpn_id, mac_addr, rssi) VALUES ('{0}', '{1}', {2});".format(trigger_obj['data']['node'], trigger_obj['data']['mac'], int(trigger_obj['data']['rssi']))
-                print(query)
-                cursor.execute(query)
-                conn.commit()
+                if int(trigger_obj['data']['rssi']) > RSSI_LIMIT_TO_ENTRY:
+                    query = "INSERT INTO bus_checkins(lpn_id, mac_addr, rssi) VALUES ('{0}', '{1}', {2});".format(trigger_obj['data']['node'], trigger_obj['data']['mac'], int(trigger_obj['data']['rssi']))
+                    print(query)
+                    cursor.execute(query)
+                    conn.commit()
 
     except Exception as e:
         print("Error in on_message: "+str(e))
