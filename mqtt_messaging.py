@@ -18,7 +18,7 @@ def on_connect(client, userdata, flags, rc):
     client.subscribe(config.MQTT_SUBSCRIBE_TOPIC)
 
 def on_message(client, userdata, msg):
-    global conn, cursor
+    cursor, conn = db.connection()
     try:
         trigger_obj = json.loads(msg.payload)
         if trigger_obj is not None and 'data' in trigger_obj.keys():
@@ -28,9 +28,12 @@ def on_message(client, userdata, msg):
                     print(query)
                     cursor.execute(query)
                     conn.commit()
+                    conn.close()
 
     except Exception as e:
         print("Error in on_message: "+str(e))
+        if conn is not None:
+            conn.close()
 
 
 def init_mqtt():

@@ -16,6 +16,7 @@ def read_bus_times():
     bus_log_row_headers = [x[0] for x in cursor.description]
     for i, cur_record in enumerate(loc):
       bus_times.append(dict(zip(bus_log_row_headers, cur_record)))
+  conn.close()
   return bus_times
 
 def delete_bus_entry(entry_id):
@@ -25,6 +26,7 @@ def delete_bus_entry(entry_id):
     cursor.execute(query)
     row_id = cursor.lastrowid
     conn.commit()
+    conn.close()
     return {"ok": True, "last_inserted_id": row_id}
   except Exception as e:
     return {"ok": False, "error": str(e)}
