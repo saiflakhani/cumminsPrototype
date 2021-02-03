@@ -8,15 +8,14 @@ h1{
   margin-bottom: 15px;
 }
 table{
-  width:100%;
-  table-layout: fixed;
+  width:50%;
 }
 .tbl-header{
   background-color: rgba(255,255,255,0.3);
  }
 .tbl-content{
-  height:600px;
-  overflow-x:auto;
+  height:400px;
+  overflow-x:hidden;
   margin-top: 0px;
   border: 1px solid rgba(255,255,255,0.3);
 }

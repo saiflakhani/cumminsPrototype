@@ -6,9 +6,9 @@ info:
 consumes:
   - application/json
 produces:
-  - text/html
+  - application/json
 
-basePath: /
+basePath: /api
 
 # Paths supported by the server application
 paths:
@@ -35,3 +35,48 @@ paths:
                 type: string
               bus_type:
                 type: string
+    
+    delete:
+      tags:
+        - Bus Checkin Times
+      parameters:
+        - name: entry_id
+          description: ID of the Entry to delete
+          in: query
+          required: true
+          type: number
+
+      summary: Delete Bus Checkin Time
+      description: Delete Bus Checkin Time
+      operationId: bus_times.delete_bus_entry
+      responses:
+        200:
+          description: Success
+
+  /bus_names:
+    post:
+      tags:
+        - Bus Names and Numbers
+      summary: Add Bus Names (Numbers)
+      description: Add Bus Names (Numbers)
+      operationId: bus_numbers.add_bus_name
+      parameters:
+        - name: bus_name
+          description: Number of Bus
+          in: query
+          type: string
+          required: true
+        - name: bus_type
+          description: Type of bus (big, small)
+          in: query
+          type: string
+          required: true
+        - name: lpn_id
+          description: ID of LPN of that bus
+          in: query
+          type: string
+          required: true
+      responses:
+        200:
+          description: Success
+              

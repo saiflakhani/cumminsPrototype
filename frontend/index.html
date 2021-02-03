@@ -1,57 +1,66 @@
 <!doctype html>
 <html lang="en">
-  <head>
-  	<title>Table 03</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<head>
+	<title>Table 03</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,700' rel='stylesheet' type='text/css'>
 
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-	
+
 	<link rel="stylesheet" href="css/style.css">
 
-	</head>
-	<body>
-	
-		<section>
-			<!--for demo wrap-->
-			<h1>CUMMINS BUS DETECTION</h1>
-			<div class="tbl-header">
-			  <table cellpadding="0" cellspacing="0" border="0">
-				<thead>
-				  <tr>
-					<th>BUS ID</th>
-					<th>BUS NAME</th>
-					<th>RSSI</th>
-					<th>MAC ADDRESS</th>
-					<th>Time of Detection</th>
-				  </tr>
-				</thead>
-			  </table>
+</head>
+
+<body>
+
+	<section>
+		<div class="row">
+			<div class="col-md-6">
+				<canvas id="canvas" height="600" width="600"></canvas>
 			</div>
-			<div class="tbl-content">
-			  <table cellpadding="0" cellspacing="0" border="0">
-				<tbody>
-					{% for bus_time in bus_times %}
-								<tr>
-									<td>{{ bus_time['lpn_id'] }}</td>
-									<td>{{ bus_time['bus_name'] }}</td>
-									<td>{{ bus_time['rssi'] }}</td>
-									<td>{{ bus_time['mac_addr'] }}</td>
-									<td>{{ bus_time['date_modified'] }}</td>
-								</tr>
-					{% endfor %}
-				</tbody>
-			</table>
+			<div class="col-md-6">
+				<h1>CUMMINS BUS DETECTION</h1>
+				<div class="tbl-header">
+					<table cellpadding="0" cellspacing="0" border="0">
+						<thead>
+							<tr>
+								<th>BUS ID</th>
+								<th>BUS NAME</th>
+								<th>RSSI</th>
+								<th>MAC ADDRESS</th>
+								<th>Time of Detection</th>
+							</tr>
+						</thead>
+					</table>
+				</div>
+				<div class="tbl-content">
+					<table cellpadding="0" cellspacing="0" border="0">
+						<tbody>
+							{% for bus_time in bus_times %}
+							<tr>
+								<td>{{ bus_time['lpn_id'] }}</td>
+								<td>{{ bus_time['bus_name'] }}</td>
+								<td>{{ bus_time['rssi'] }}</td>
+								<td>{{ bus_time['mac_addr'] }}</td>
+								<td>{{ bus_time['date_modified'] }}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
 		</div>
-	  </section>
 
-  <script src="js/jquery.min.js"></script>
-  <script src="js/popper.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/main.js"></script>
+	</section>
 
-	</body>
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="js/main.js"></script>
+
+</body>
+
 </html>
-
